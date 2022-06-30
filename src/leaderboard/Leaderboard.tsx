@@ -22,9 +22,7 @@ type DonationsQueryRes = {
   donations: Donation[]
 }
 
-interface Props {}
-
-export const Leaderboard = (props: Props) => {
+export const Leaderboard = () => {
   const [field, setOrderByField] = useState('createdAt')
 
   const [{ data, fetching, error }] = useQuery<DonationsQueryRes>({
@@ -55,7 +53,7 @@ export const Leaderboard = (props: Props) => {
         </RadioGroup>
 
         {data.donations.map((donation) => (
-          <LeaderboardItem donation={donation} />
+          <LeaderboardItem key={donation.id} donation={donation} />
         ))}
       </VStack>
     </Box>

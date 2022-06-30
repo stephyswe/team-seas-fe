@@ -16,6 +16,7 @@ import { ColorModeSwitcher } from './ColorModeSwitcher'
 import { Logo } from './Logo'
 import { Counter } from './donation/Counter'
 import { Leaderboard } from './leaderboard/Leaderboard'
+import { DonationWizard } from './donation/DonationWizard'
 
 const TotalDonationsQuery = `
   query Query {
@@ -74,7 +75,7 @@ export const App = () => {
                 to={res.data || data.totalDonations}
               />
             </Heading>
-            {/* <DonationWizard /> */}
+            <DonationWizard />
             <Leaderboard />
           </VStack>
         </Grid>
