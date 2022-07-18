@@ -20,13 +20,8 @@ export const TextareaField = ({
 
   const hasError = Boolean(meta.touched && meta.error)
   return (
-    <FormControl isInvalid={hasError}>
-      <FormLabel
-        htmlFor={field.name}
-        fontWeight="bold"
-        fontSize="xs"
-        textTransform="uppercase"
-      >
+    <FormControl isInvalid={hasError} mb={7}>
+      <FormLabel htmlFor={field.name} fontWeight="bold" fontSize="xs" mb={1}>
         {label}
       </FormLabel>
       <Textarea id={field.name} placeholder={placeholder} {...field} />

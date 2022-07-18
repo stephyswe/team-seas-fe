@@ -1,5 +1,5 @@
 import { animate } from 'framer-motion'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface Props {
   from: number
@@ -7,19 +7,38 @@ interface Props {
 }
 
 export const Counter = ({ from, to }: Props) => {
+  const [isStart, setStart] = useState(true)
   const nodeRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const node = nodeRef.current
     if (node) {
-      const controls = animate(from, to, {
-        duration: 1,
-        onUpdate(value) {
-          node.textContent = parseInt(value.toFixed(0)).toLocaleString()
-        }
-      })
+      let controls: any
+      if (isStart) {
+        console.log('not here')
+        from = 0
+        node.textContent = '0'
 
-      return () => controls.stop()
+        setTimeout(() => {
+          controls = animate(from, to, {
+            duration: 1,
+            onUpdate(value) {
+              node.textContent = parseInt(value.toFixed(0)).toLocaleString()
+            }
+          })
+        }, 1500)
+
+        setStart(false)
+      } else {
+        controls = animate(from, to, {
+          duration: 1,
+          onUpdate(value) {
+            node.textContent = parseInt(value.toFixed(0)).toLocaleString()
+          }
+        })
+      }
+
+      //return () => controls.stop()
     }
   }, [from, to])
 

@@ -1,5 +1,5 @@
 import { useRadio, Box, UseRadioProps } from '@chakra-ui/react'
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 interface Props extends UseRadioProps {
   children: ReactNode
@@ -17,19 +17,21 @@ const RadioCard = (props: Props) => {
       <Box
         {...checkbox}
         cursor="pointer"
-        borderWidth="1px"
+        borderWidth="0"
         borderRadius="md"
-        boxShadow="md"
+        transition="background-color .5s ease"
         fontSize="lg"
+        bg="#f7f7f7"
         _checked={{
-          bg: 'blue.600',
-          color: 'white',
-          borderColor: 'teal.600'
+          bg: 'var(--bahamas)',
+          color: 'white'
         }}
-        _focus={{
-          boxShadow: 'outline'
+        _hover={{
+          bg: 'var(--bahamas)',
+          color: 'white'
         }}
-        px={2}
+        textAlign="center"
+        px={1}
         py={2}
       >
         {props.children}

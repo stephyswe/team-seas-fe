@@ -3,6 +3,7 @@ import { useMutation } from 'urql'
 import { Box } from '@chakra-ui/layout'
 import { CountSelection } from './CountSelection'
 import { DonationDetail } from './DonationDetail'
+import { Heading, Text } from '@chakra-ui/react'
 
 const CreateDonation = `
   mutation Mutation($createDonationInput: CreateDonationInput!) {
@@ -48,14 +49,29 @@ export const DonationWizard = () => {
   ]
 
   return (
-    <Box boxShadow="xl" p={8} bg="white" borderRadius="xl" minW="sm">
+    <Box minW="sm">
       {showConfirmation ? (
-        <div>
+        <Text textAlign="center">
           Thank you for your donation of $
           {donationResult?.data.createDonation?.count}!!
-        </div>
+        </Text>
       ) : (
-        pages[step]
+        <Box maxW="500px">
+          <Box
+            px={2}
+            py={3}
+            borderRadius="xl"
+            bg="#f7f7f7"
+            className="texting"
+            borderBottomRadius={0}
+          >
+            <Heading size="md" textAlign="center" textTransform="uppercase">
+              {step === 0 ? 'Join #teamseas' : 'Details'}
+            </Heading>
+          </Box>
+
+          {pages[step]}
+        </Box>
       )}
     </Box>
   )

@@ -12,6 +12,9 @@ import {
 } from 'urql'
 import { createClient as createWSClient } from 'graphql-ws'
 
+import './styles.css'
+import './style-sunset.css'
+
 const wsClient = createWSClient({
   url: 'ws://localhost:4000/graphql'
 })

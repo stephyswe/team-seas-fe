@@ -1,4 +1,4 @@
-import { VStack, Button, Heading } from '@chakra-ui/react'
+import { VStack, Button, Heading, Box, Text } from '@chakra-ui/react'
 import { Form, Formik } from 'formik'
 import * as yup from 'yup'
 import { InputField } from '../form/InputField'
@@ -38,42 +38,53 @@ export const DonationDetail = ({ next, previous }: Props) => {
       validationSchema={detailsSchema}
     >
       {(formikProps: any) => (
-        <Form>
-          <VStack spacing={4} align="stretch">
-            <Heading as="h3" size="md">
-              Details
-            </Heading>
+        <Box
+          bg="white"
+          py={3}
+          px={4}
+          borderRadius="xl"
+          borderTopRadius={0}
+          gap={4}
+        >
+          <Form>
             <InputField
               label="Display Name"
               name="displayName"
               placeholder="Display Name"
             />
-
+            <InputField
+              label="Team"
+              name="team"
+              placeholder="Team name (Optional)"
+            />
             <InputField
               label="Email Address"
               name="email"
               placeholder="Email"
             />
-
             <InputField
               label="Mobile Phone"
               name="mobile"
-              placeholder="Mobile Phone"
+              placeholder="Mobile Phone (Optional)"
             />
-
-            <InputField label="Team" name="team" placeholder="Team name" />
-
             <TextareaField
               label="Message"
               name="message"
-              placeholder="My #TeamSeas message is..."
+              placeholder="Message (140 characters max)"
             />
-
             <hr />
+            <Text> *indicates a required field</Text>
+            <Text>YES! Keep me posted with #TeamSeas updates</Text>
+            <Text>Please keep my donation anonymous</Text>
+            <Text>
+              My donation is a gift for someone We’ll send a certificate to your
+              email address, which you can forward along or print. (here's an
+              example)
+            </Text>
 
             <VStack spacing={2}>
               <Button
-                minWidth="100%"
+                w="100%"
                 colorScheme="orange"
                 size="lg"
                 borderRadius="full"
@@ -82,7 +93,7 @@ export const DonationDetail = ({ next, previous }: Props) => {
                 Submit
               </Button>
               <Button
-                minWidth="100%"
+                w="100%"
                 size="lg"
                 borderRadius="full"
                 variant="ghost"
@@ -93,8 +104,8 @@ export const DonationDetail = ({ next, previous }: Props) => {
                 Previous
               </Button>
             </VStack>
-          </VStack>
-        </Form>
+          </Form>
+        </Box>
       )}
     </Formik>
   )
