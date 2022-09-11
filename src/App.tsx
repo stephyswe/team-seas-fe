@@ -11,11 +11,8 @@ import {
   extendTheme,
   HTMLChakraProps,
   ThemingProps,
-  useColorModeValue,
   VStack,
-  HStack,
   Flex,
-  Divider,
   Link,
   Text,
   Heading,
@@ -30,7 +27,6 @@ import { Counter } from './donation/Counter'
 import { DonationWizard } from './donation/DonationWizard'
 import { StyleConfig } from '@chakra-ui/theme-tools'
 import { Leaderboard } from './leaderboard/Leaderboard'
-import { LeaderboardItem } from './leaderboard/LeaderboardItem'
 
 const TotalDonationsQuery = `
   query Query {
@@ -100,8 +96,6 @@ const theme = extendTheme({
 })
 
 export const App = () => {
-  const bgColor = useColorModeValue('gray.400', 'gray.500')
-
   const [res] = useSubscription(
     { query: TotalUpdatedQuery },
     handleSubscription
@@ -429,7 +423,11 @@ function MiddleSection() {
         <Container>
           <div className="container text-center">
             <Heading textTransform="uppercase" color="white">
-            <img src="/assets/images/icon-beaches.png" width="30" height="30" />
+              <img
+                src="/assets/images/icon-beaches.png"
+                width="30"
+                height="30"
+              />
               How it Works
             </Heading>
             <Text color="white">
@@ -450,7 +448,11 @@ function MiddleSection() {
                 borderRadius="xl"
               >
                 <Tab _focus={{ bg: 'white' }} bg="var(--seafoam)">
-                  <img src="./assets/images/icon-beaches.png" width="30" height="30" />
+                  <img
+                    src="./assets/images/icon-beaches.png"
+                    width="30"
+                    height="30"
+                  />
                   Beaches
                 </Tab>
                 <Tab _focus={{ bg: 'white' }} bg="var(--seafoam)">
@@ -657,6 +659,7 @@ function MiddleSection() {
                     href="https://oceanconservancy.org/blog/2021/10/29/teamseas-will-transformational-ocean-lets-go/"
                     target="_blank"
                     className="btn btn-outline-white learn-more-btn"
+                    rel="noreferrer"
                   >
                     Learn More
                   </a>
@@ -842,6 +845,7 @@ function MiddleSection() {
                     href="https://oceanconservancy.org/blog/2021/10/29/teamseas-will-transformational-ocean-lets-go/"
                     target="_blank"
                     className="btn btn-outline-white learn-more-btn"
+                    rel="noreferrer"
                   >
                     Learn More
                   </a>
@@ -1060,6 +1064,7 @@ function MiddleSection() {
                     href="https://theoceancleanup.com/teamseas/"
                     target="_blank"
                     className="btn btn-outline-white learn-more-btn"
+                    rel="noreferrer"
                   >
                     Learn More
                   </a>

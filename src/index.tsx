@@ -15,12 +15,16 @@ import { createClient as createWSClient } from 'graphql-ws'
 import './styles.css'
 import './style-sunset.css'
 
+const isProd = process.env.NODE_ENV === 'production'
+
+const URL = 'team-seas-nestjs.herokuapp.com'
+
 const wsClient = createWSClient({
-  url: 'ws://localhost:4000/graphql'
+  url: isProd ? `ws://${URL}/graphql` : 'ws://localhost:4000/graphql'
 })
 
 const client = createClient({
-  url: 'http://localhost:4000/graphql',
+  url: isProd ? `https://${URL}/graphql` : 'http://localhost:4000/graphql',
   exchanges: [
     ...defaultExchanges,
     subscriptionExchange({
