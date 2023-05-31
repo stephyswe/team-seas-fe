@@ -16,15 +16,17 @@ import './styles.css'
 import './style-sunset.css'
 
 const isProd = process.env.NODE_ENV === 'production'
+const graphqlPath = '/graphql';
+const URL = process.env.REACT_APP_API_PRODUCTION
+const localhost = process.env.REACT_APP_API_LOCALHOST
 
-const URL = 'team-seas-nestjs.herokuapp.com'
-
+const serverURL = isProd ? `https://${URL}${graphqlPath}` : `http://${localhost}${graphqlPath}`
 const wsClient = createWSClient({
-  url: isProd ? `ws://${URL}/graphql` : 'ws://localhost:4000/graphql'
+  url: isProd ? `ws://${URL}${graphqlPath}` : `ws://${localhost}${graphqlPath}`
 })
 
 const client = createClient({
-  url: isProd ? `https://${URL}/graphql` : 'http://localhost:4000/graphql',
+  url:serverURL,
   exchanges: [
     ...defaultExchanges,
     subscriptionExchange({
