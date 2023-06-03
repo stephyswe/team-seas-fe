@@ -22,7 +22,7 @@ const localhost = process.env.REACT_APP_API_LOCALHOST
 
 const serverURL = isProd ? `https://${URL}${graphqlPath}` : `http://${localhost}${graphqlPath}`
 const wsClient = createWSClient({
-  url: isProd ? `wss://${URL}${graphqlPath}` : `ws://${localhost}${graphqlPath}`
+  url: isProd ? `ws://${URL}${graphqlPath}` : `ws://${localhost}${graphqlPath}`
 })
 
 const client = createClient({
